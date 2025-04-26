@@ -7,6 +7,6 @@ public class PassengerPlane extends Aircraft {
 
     @Override
     public void receive(String msg) {
-        System.out.println("Пассажирский самолет " + id + " получил: " + msg);
+        System.out.println("Passenger plane " + id + " received: " + msg);
     }
 }

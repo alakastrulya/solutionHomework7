@@ -7,6 +7,6 @@ public class CargoPlane extends Aircraft {
 
     @Override
     public void receive(String msg) {
-        System.out.println("Грузовой самолет " + id + " получил: " + msg);
+        System.out.println("Cargo plane " + id + " received: " + msg);
     }
 }
