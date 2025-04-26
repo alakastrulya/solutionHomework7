@@ -40,4 +40,8 @@ public class Season implements Iterable<Episode> {
         // returning iterator in usual way that support for-each
         return new SeasonIterator(this);
     }
+
+    public SkipIntroIterator getSkipIntroIterator(int skipSeconds) {
+        return new SkipIntroIterator(this.getNormalIterator(), skipSeconds);
+    }
 }
