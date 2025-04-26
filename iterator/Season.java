@@ -44,4 +44,8 @@ public class Season implements Iterable<Episode> {
     public SkipIntroIterator getSkipIntroIterator(int skipSeconds) {
         return new SkipIntroIterator(this.getNormalIterator(), skipSeconds);
     }
+
+    public WatchHistoryIterator getWatchHistoryIterator() {
+        return new WatchHistoryIterator(this.getNormalIterator());
+    }
 }
