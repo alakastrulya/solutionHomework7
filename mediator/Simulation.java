@@ -5,11 +5,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ScheduledExecutorService;
 
-
 public class Simulation {
+    // main method
     public static void main(String[] args) {
+        // create dashboard
+        Dashboard dashboard = new Dashboard();
         // create tower
-        ControlTower tower = new ControlTower();
+        ControlTower tower = new ControlTower(dashboard);
         // create random generator
         Random random = new Random();
 
