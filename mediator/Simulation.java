@@ -5,8 +5,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ScheduledExecutorService;
 
+//Simulator
 public class Simulation {
-    // main method
     public static void main(String[] args) {
         // create dashboard
         Dashboard dashboard = new Dashboard();
@@ -54,10 +54,21 @@ public class Simulation {
             // shutdown scheduler
             scheduler.shutdown();
             // wait for termination
-            scheduler.awaitTermination(5, TimeUnit.SECONDS);
+            if (!scheduler.awaitTermination(10, TimeUnit.SECONDS)) {
+                // force shutdown if not terminated
+                scheduler.shutdownNow();
+                System.out.println("Scheduler forcibly shutdown");
+                dashboard.addLogMessage("Scheduler forcibly shutdown");
+            }
+            // notify tower that simulation has ended
+            tower.endSimulation();
         } catch (InterruptedException e) {
             // log error
             e.printStackTrace();
+            // force shutdown
+            scheduler.shutdownNow();
+            // notify tower that simulation has ended
+            tower.endSimulation();
         }
     }
 
@@ -90,9 +101,13 @@ public class Simulation {
             if (random.nextInt(100) < 5) {
                 // simulate emergency
                 selected = new PassengerPlane("MAYDAY", 10, tower);
+                // mayday always requests landing
+                selected.requestRunway(true);
+            } else {
+                // 50% chance of landing or takeoff
+                boolean isLanding = random.nextBoolean();
+                selected.requestRunway(isLanding);
             }
-            // request runway
-            selected.requestRunway();
         }
     }
 }

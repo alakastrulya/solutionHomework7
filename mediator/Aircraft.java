@@ -27,10 +27,16 @@ public abstract class Aircraft {
         mediator.broadcast(msg, this);
     }
 
-    // requests runway access
+    // requests runway for landing
     public boolean requestRunway() {
-        // forward request to mediator
+        // request via mediator (default to landing)
         return mediator.requestRunway(this);
+    }
+
+    // requests runway for landing or takeoff
+    public boolean requestRunway(boolean isLanding) {
+        // request via mediator
+        return mediator.requestRunway(this, isLanding);
     }
 
     // gets aircraft id
