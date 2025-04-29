@@ -6,7 +6,7 @@ import iterator.model.EpisodeView;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-class SkipIntroIterator implements Iterator<EpisodeView> {
+public class SkipIntroIterator implements Iterator<EpisodeView> {
     private EpisodeIterator wrappedIterator;
     // number of seconds to skip
     private int skipSeconds;

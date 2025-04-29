@@ -1,6 +1,6 @@
 package iterator.model;
 import iterator.iterator.BingeIterator;
-import iterator.EpisodeIterator;
+import iterator.iterator.EpisodeIterator;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Series{
         return new BingeIterator(this);
     }
 
-    List<Season> getSeasons() {
+    public List<Season> getSeasons() {
         return seasons;
     }
 }

@@ -1,10 +1,7 @@
 package iterator.model;
 
 
-import iterator.iterator.ReverseIterator;
-import iterator.iterator.SeasonIterator;
-import iterator.iterator.ShuffleIterator;
-import iterator.iterator.WatchHistoryIterator;
+import iterator.iterator.*;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -36,7 +33,7 @@ public class Season implements Iterable<Episode> {
         return new ShuffleIterator(this, seed);
     }
 // getter for list of episodes
-    List<Episode> getEpisodes() {
+public List<Episode> getEpisodes() {
         return episodes;
     }
 // implementation of the method from Iterable
